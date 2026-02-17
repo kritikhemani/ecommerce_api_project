@@ -5,3 +5,5 @@ DATABASE_URL = "postgresql+asyncpg://ecommerce_user:password@localhost/ecommerce
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 AsyncSessionLocal = sessionmaker(bind=engine, class_=AsyncSession, expire_on_commit=False)
+
+Base = declarative_base()

@@ -4,3 +4,5 @@ class CartCreate(BaseModel):
     user_id: int
     product_id: int
     
+
+    

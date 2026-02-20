@@ -10,5 +10,6 @@ class ProductResponse(BaseModel):
     name: str
     description: str
     price: float
+    model_config = ConfigDict(from_attributes=True)
     
     

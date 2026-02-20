@@ -5,3 +5,10 @@ class CreateProduct(BaseModel):
     description: str
     price: float
     
+class ProductResponse(BaseModel):
+    id: int
+    name: str
+    description: str
+    price: float
+    
+    

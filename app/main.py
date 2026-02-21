@@ -4,5 +4,5 @@ from app.routers import products, cart
 app = FastAPI(title="Ecommerce API")
 
 @app.get("/")
-async def root():
+async def home():
     return {"message": "Welcome to the Ecommerce API!"}

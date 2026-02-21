@@ -8,3 +8,4 @@ async def home():
     return {"message": "Welcome to the Ecommerce API!"}
 
 app.include_router(products.router)
+app.include_router(cart.router)

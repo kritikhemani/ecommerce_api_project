@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import products
+from app.routers import products, cart
 
 app = FastAPI(title="Ecommerce API")
 

@@ -9,3 +9,4 @@ async def home():
 
 app.include_router(products.router)
 app.include_router(cart.router)
+app.include_router(checkout.router)

@@ -8,3 +8,6 @@ def get_cache(key: str):
     if data:
         return json.loads(data)
     return None
+
+def set_cache(key: str, value, expire: int = 3600):
+    redis_client.set(key, json.dumps(value), ex=expire)

@@ -6,3 +6,7 @@ from app.schemas.product import CreateProduct, ProductResponse
 
 
 router = APIRouter(prefix="/products", tags=["Products"])
+
+@router.post("/", response_model=ProductResponse)
+async def create_product(product: CreateProduct, db: AsyncSession = Depends(get_db)):
+    pass

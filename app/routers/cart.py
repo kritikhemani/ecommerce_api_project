@@ -10,3 +10,7 @@ router = APIRouter(prefix="/cart", tags=["Cart"])
 @router.post("/", response_model=CartResponse)
 async def add_to_cart(cart: CartCreate, db: AsyncSession = Depends(get_db)):
     pass
+
+@router.get("/{cart_id}", response_model=CartResponse)
+async def get_cart(db: AsyncSession = Depends(get_db)):
+    pass

@@ -4,4 +4,7 @@ import json
 redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True)
 
 def get_cache(key: str):
-    pass
+    data = redis_client.get(key)
+    if data:
+        return json.loads(data)
+    return None

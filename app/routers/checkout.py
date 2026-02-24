@@ -5,6 +5,7 @@ from app.models.cart import Cart
 from app.models.product import Product
 from app.models.order import Order
 from sqlalchemy import select
+from app.tasks.email import send_order_confirmation_email
 
 router = APIRouter(prefix="/checkout", tags=["Checkout"])
 

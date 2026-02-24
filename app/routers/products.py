@@ -4,6 +4,7 @@ from app.database.connection import get_db
 from app.models.product import Product
 from app.schemas.product import CreateProduct, ProductResponse
 from app.cache.redis import get_cache, set_cache
+from sqlalchemy import select
 
 
 router = APIRouter(prefix="/products", tags=["Products"])

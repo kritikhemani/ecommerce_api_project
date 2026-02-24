@@ -8,5 +8,5 @@ from app.models.order import Order
 router = APIRouter(prefix="/checkout", tags=["Checkout"])
 
 @router.post("/")
-async def checkout():
+async def checkout(user_id: int, db: AsyncSession = Depends(get_db)):
     pass

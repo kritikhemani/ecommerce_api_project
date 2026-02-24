@@ -5,10 +5,10 @@ from app.models.cart import Cart
 from app.models.product import Product
 from app.models.order import Order
 from sqlalchemy import select
-from app.tasks.email import send_order_confirmation_email
+#from app.tasks.email import send_order_confirmation_email
 
 router = APIRouter(prefix="/checkout", tags=["Checkout"])
 
 @router.post("/")
 async def checkout(user_id: int, db: AsyncSession = Depends(get_db)):
-    pass
+    result = await db.execute(select(Cart).where(Cart.user_id == user_id))

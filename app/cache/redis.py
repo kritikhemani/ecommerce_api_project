@@ -11,4 +11,4 @@ def get_cache(key: str):
     return None
 
 def set_cache(key: str, value, expire: int = 3600):
-    redis_client.set(key, json.dumps(value), ex=expire)
+    redis_client.set(key, json.dumps(jsonable_encoder(value)), ex=expire)

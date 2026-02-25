@@ -1,5 +1,6 @@
 import redis
 import json
+from fastapi.encoders import jsonable_encoder
 
 redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True)
 

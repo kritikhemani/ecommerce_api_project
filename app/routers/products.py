@@ -18,7 +18,7 @@ async def create_product(product: CreateProduct, db: AsyncSession = Depends(get_
     await db.refresh(new_product)
     return new_product
 
-@router.get("/{product_id}", response_model=List[ProductResponse])
+@router.get("/{product_id}", response_model=ProductResponse)
 async def get_product(product_id: int, db: AsyncSession = Depends(get_db)):
     cache = get_cache("products")
     if cache:
@@ -26,8 +26,8 @@ async def get_product(product_id: int, db: AsyncSession = Depends(get_db)):
         return cache
     print("Cache miss")
     
-    result = await db.execute(select(Product))
-    products = result.scalars().all()
+    result = await db.execute(select(Product).where(Product.id == product_id))
+    product = result.scalar_one_or_none()
     
-    set_cache("products", products)
-    return products
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")

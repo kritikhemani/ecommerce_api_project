@@ -17,7 +17,7 @@ async def add_to_cart(cart: CartCreate, db: AsyncSession = Depends(get_db)):
     return new_cart
 
 @router.get("/{cart_id}", response_model=CartResponse)
-async def get_cart(db: AsyncSession = Depends(get_db)):
-    result = await db.execute(select(Cart))
+async def get_cart(cart_id: int, db: AsyncSession = Depends(get_db)):
+    result = await db.execute(select(Cart).where(Cart.user_id == cart_id))
     carts = result.scalars().all()
     return carts

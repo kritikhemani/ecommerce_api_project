@@ -32,3 +32,7 @@ async def get_product(product_id: int, db: AsyncSession = Depends(get_db)):
     
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")
+    
+    product_data = ProductResponse.from_orm(product).dict()
+    set_cache(cache_key, product_data)
+    return product_data

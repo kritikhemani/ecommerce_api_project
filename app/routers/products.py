@@ -17,7 +17,7 @@ async def create_product(product: CreateProduct, db: AsyncSession = Depends(get_
     await db.refresh(new_product)
     return new_product
 
-@router.get("/{product_id}", response_model=ProductResponse)
+@router.get("/{product_id}", response_model=List[ProductResponse])
 async def get_product(product_id: int, db: AsyncSession = Depends(get_db)):
     cache = get_cache("products")
     if cache:

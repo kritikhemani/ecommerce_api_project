@@ -20,7 +20,8 @@ async def create_product(product: CreateProduct, db: AsyncSession = Depends(get_
 
 @router.get("/{product_id}", response_model=ProductResponse)
 async def get_product(product_id: int, db: AsyncSession = Depends(get_db)):
-    cache = get_cache("products")
+    cache_key = f"product:{product_id}"
+    cache = get_cache(cache_key)
     if cache:
         print("Cache hit")
         return cache

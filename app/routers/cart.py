@@ -18,7 +18,7 @@ async def add_to_cart(cart: CartCreate, db: AsyncSession = Depends(get_db)):
 
 @router.get("/{cart_id}", response_model=CartResponse)
 async def get_cart(cart_id: int, db: AsyncSession = Depends(get_db)):
-    result = await db.execute(select(Cart).where(Cart.user_id == cart_id))
+    result = await db.execute(select(Cart).where(Cart.id == cart_id))
     cart = result.scalar_one_or_none()
     
     if not cart:

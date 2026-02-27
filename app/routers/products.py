@@ -36,3 +36,7 @@ async def get_product(product_id: int, db: AsyncSession = Depends(get_db)):
     product_data = ProductResponse.from_orm(product).dict()
     set_cache(cache_key, product_data)
     return product_data
+
+@router.get("/", response_model=List[ProductResponse])
+async def list_products(db: AsyncSession = Depends(get_db)):
+    pass

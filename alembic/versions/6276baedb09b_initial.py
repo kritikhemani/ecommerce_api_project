@@ -1,8 +1,8 @@
-"""add cart table
+"""initial
 
-Revision ID: c9c802f52f91
-Revises: 9e471002956c
-Create Date: 2026-02-26 21:52:40.491615
+Revision ID: 6276baedb09b
+Revises: 
+Create Date: 2026-02-27 17:47:52.333231
 
 """
 from typing import Sequence, Union
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'c9c802f52f91'
-down_revision: Union[str, Sequence[str], None] = '9e471002956c'
+revision: str = '6276baedb09b'
+down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
@@ -24,7 +24,7 @@ def upgrade() -> None:
     op.create_table('orders',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('total_amount', sa.Float(), nullable=False),
+    sa.Column('total_price', sa.Float(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_orders_id'), 'orders', ['id'], unique=False)

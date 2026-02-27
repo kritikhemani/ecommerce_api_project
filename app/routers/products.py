@@ -47,6 +47,6 @@ async def list_products(db: AsyncSession = Depends(get_db)):
     print("Cache miss for all products")
     result = await db.execute(select(Product))
     products = result.scalars().all()
-    product_list = [ProductResponse.from_orm(product) for product in products]
-    set_cache(cache_key, product_list, expire=60) 
+    product_list = [ProductResponse.from_orm(product).dict() for product in products]
+    set_cache(cache_key, product_list, expire=None) 
     return product_list
